@@ -4,17 +4,19 @@ const calculateRoute = express.Router();
 calculateRoute.post("/", (req, res) => {
   try {
     let { AIA, IR, TotalYr } = req.body;
-    let i = IR / 100;
-    let MaturityValue = AIA * [((1 + i) ** TotalYr - 1) / i];
-    let TotalInvestAmount = AIA * TotalYr;
-    let TotalInterset = MaturityValue - TotalInvestAmount;
-    res.status(200).send({ MaturityValue, TotalInvestAmount, TotalInterset });
+    let i=IR/100
+    let MaturityValue = AIA*[((1 + i) ** TotalYr - 1) / i];
+    let TotalInvestAmount=AIA*TotalYr
+    let TotalInterset=MaturityValue-TotalInvestAmount
+    res.status(200).send({MaturityValue,TotalInvestAmount,TotalInterset})
   } catch (error) {
-    res.send(error);
+    res.send(error)
   }
 });
 
-module.exports = calculateRoute;
+
+module.exports = { calculateRoute };
+
 
 // const express = require("express");
 // const jwt = require("jsonwebtoken");
