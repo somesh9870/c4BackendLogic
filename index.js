@@ -3,6 +3,8 @@ const cors = require("cors");
 const connection = require("./db");
 const { userRoutes } = require("./routes/user.routes");
 const { calculateRoute } = require("./routes/calculator.routes");
+const appoinmentRoutes = require("./routes/appointment.route");
+const userRouter = require("./routes/users.route");
 
 const app = express();
 app.use(cors());
@@ -10,7 +12,10 @@ app.use(cors());
 app.use(express.json());
 app.use("/user", userRoutes);
 app.use("/calculte", calculateRoute);
-// new
+
+// new mock 13
+app.use("/users", userRouter);
+app.use("/appoinment", appoinmentRoutes);
 
 app.listen(process.env.port, async () => {
   try {
